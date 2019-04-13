@@ -1,0 +1,29 @@
+100 Continue：当客户端提交一个包含主体的请求时，将发送这个响应，该响应表示已收到请求消息头，客户端应继续发送主体，请求完成后，再由服务器返回另一个响应。
+
+200 OK：已成功提交请求，且响应主体包含请求结果。
+
+201 Created：PUT请求的响应返回这个状态码表示请求已成功提交。
+
+301 Moved Permanently：将浏览器永久重定向到另一个在Location消息头中指定的URL，以后客户端应使用新URL替换原始URL。
+
+302 Found：将浏览器暂时重定向到另一个在Location消息头中指定的URL，客户端应在随后的请求中恢复使用原始URL。
+
+304 Not Modified：指示浏览器使用缓存中保存的所请求资源的副本，服务器使用If-Modified-Since与If-None-Match消息头确定客户端是否拥有最新的版本的资源。
+
+400 Bad Request：表示客户端提交了一个无效的HTTP请求，当以某种无效的方式修改请求时(例如在URL中插入一个空格符)，可能会遇到此状态码。
+
+401 Unauthorized：服务器在许可请求前要求HTTP进行身份验证，WWW-Authenticate消息头详细说明所支持的身份验证类型。
+
+403 Forbidden：无论是否通过身份验证，禁止任何人访问被请求的资源。
+
+404 Not Found：所请求资源不存在。
+
+405 Method Not Allowed：指定的URL不支持请求中使用的方法，如，试图在不支持PUT方法的地方使用该方法。
+
+413 Request Entity Too Large：若在本地代码中探查缓冲器溢出漏洞并就此提交超长数据串，则返回此状态码表示服务器无法处理。
+
+414 Request URL Too Long：表示请求的URL过长，服务器无法处理。
+
+500 Internal Server Error：服务器在执行请求时遇到错误，当提交无法预料的输入、在APP处理过程中造成无法处理的错误时，返回此码。
+
+503 Server Unavailable：尽管Web服务器运转正常，并且能够响应请求，但服务器访问的APP还是无法做出响应。

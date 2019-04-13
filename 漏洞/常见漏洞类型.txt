@@ -1,0 +1,16 @@
+SQL注入		SQL		|| 1 like 1
+XSS		JS、HTML	前面进行闭合再输入<script>alert(1)</script>
+CSRF		JS、HTML
+SSRF		
+暴力破解
+XXE
+命令执行
+文件包含
+越权
+解析漏洞
+编辑器漏洞
+逻辑漏洞
+文件上传漏洞
+URL重定向漏洞
+目录遍历漏洞
+信息泄露

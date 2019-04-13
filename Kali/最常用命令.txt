@@ -1,0 +1,27 @@
+无法获得锁 /var/lib/dpkg/lock - open (11: 资源暂时不可用)无法锁定管理目录(/var/lib/dpkg/)，是否有其他进程正占用它？解决办法如下：
+1,终端输入 ps aux ，列出进程。找到含有apt-get的进程，直接kill PID。
+2,强制解锁,命令sudo rm /var/lib/dpkg/lock
+
+
+
+ll 显示文件权限
+chmod 777 文件名 赋予文件执行权限
+pwd 显示路径
+mkdir 创建目录
+rm -f 删除文件
+rm 删除目录
+whereis 显示文件或man位置
+rpm RPM包安装
+dpkg DEB包安装
+
+apt update:只更新软件包的索引源，作用：同步源的软件包的索引信息，进而进行软件更新；在国内用中科大的源，速度较快，1分钟搞定。
+
+
+apt upgrade:升级系统上安装的所有软件包；若更新失败，所涉及的包会保持更新之前的状态。
+
+
+apt dist-upgrade:升级整个linux系统；例如：从kali linux1.0.1升级到kali linux1.0.2（不仅能够升级所有已安装的软件包，而且会处理升级过程中可能出现的软件冲突。某些情况下，它的部分升级过程需要人工参与）
+
+apt clean 从下载的软件包中清理缓存
+
+sudo /etc/init.d/dns-clean start 刷新DNS缓存

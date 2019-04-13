@@ -1,0 +1,7 @@
+与DNSenum类似，扫描子域名和收集信息。
+可获取目标主机所有IP地址和主机信息。
+
+命令如下：
+fierce -dns 【url】
+
+通过一个单词列表执行相同的操作：fierce -dns 【url】 -wordlist hosts.txt /tmp/output.txt

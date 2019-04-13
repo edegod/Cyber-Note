@@ -1,0 +1,6 @@
+format 格式
+combat 战斗
+stealth 隐形
+manual 手工
+principle 原理
+vulnerability 漏洞

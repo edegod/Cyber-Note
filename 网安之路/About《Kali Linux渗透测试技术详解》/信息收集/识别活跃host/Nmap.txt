@@ -1,0 +1,9 @@
+网络扫描和嗅探工具包，功能如下：
+1.探测host是否在线
+2.扫描host端口，嗅探其网络服务
+3.推断host所用的OS
+
+命令如下：
+查看host是否在线以及域名、MAC地址等：nmap -sP 【IP】
+	'或者使用Nping(Nmap套具,更详细)查看：nping -echo-client "public" 【URL】
+	'发送一些十六进制数据到指定的端口：nping -tcp -p 445 -data AF56A43D 【IP】

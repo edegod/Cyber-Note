@@ -1,0 +1,9 @@
+隐藏术：
+ 
+(1)window 下，同一个文件夹下，在start.txt里面写入cmd.exe 然后修改后缀为start.bat  ,
+准备一个图片111.jpg,一个文本222.txt/avi/（其他格式也可以） ,然后把txt压缩为rar格式，
+在cmd 里输入 copy /b 11.jpg + 22.rar  33.jpg
+ 
+(2)
+Linux下面终端输入：
+cat test.zip >> image.jpg

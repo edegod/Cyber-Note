@@ -1,0 +1,19 @@
+搜索语法(空格分隔)：
+1.国家与城市：country:、city:
+2.扫描整个域名：hostname:
+3.扫描单个IP或一个网络范围：net:
+4.搜索项目：title:
+5.关键字搜索：例如apache/2.2.8 200 ok 表示搜索所有Apache正在运行的2.2.8版本，且仅搜索能打开的站点、apache/2.2.8 -401 -302 表示跳过显示401的非法页或302删除页
+6.组合搜索：以上语法的组合
+7.其他搜索：port:搜索端口号，OS:搜索操作系统，after/before:使用时间搜索服务
+
+
+使用msf实现shodan搜索
+1.在shodan注册账户
+2.获取API key
+3.启动PostgreSQL服务：service postgresql start
+4.启动Metasploit服务：service metasploit start
+5.启动MSF终端：msfconsole
+6.选择auxiliary/gather/shodan_search模块，查看模块配置参数：use auxiliary/gather/shodan_search
+7.配置QUERY和SHODAN_APIKEY参数：msf auxiliary(shodan_search)>set SHODAN_APIKEY 【第2步的API key】，set QUERY iomega（这里为要搜索的关键字）
+8.启动：run

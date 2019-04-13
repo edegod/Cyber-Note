@@ -1,0 +1,12 @@
+无视防火墙，分析host发出的数据包，
+主要识别：
+	OS类型
+	port
+	是否运行防火墙
+	是否运行于NAT模式
+	是否运行负载均衡模式
+	远程系统已启动时间
+	远程系统的DSL和ISP信息等
+
+命令如下：
+使用p0f分析Wireshark捕获的文件：p0f -r /tmp/targethost.pcap -o p0f-result.log

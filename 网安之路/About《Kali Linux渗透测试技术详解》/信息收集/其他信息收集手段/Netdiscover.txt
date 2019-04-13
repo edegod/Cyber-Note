@@ -1,0 +1,21 @@
+主动/被动的ARP侦查工具，多用于不使用DHCP的无线网络，功能有：扫描IP地址，检查在线host，搜索向他们发送的ARP请求
+
+格式：netdiscover [-i device][-r range|-l file|-p][-s time][-n node][-c count][-f][-d][-S][-P][-C]
+说明：
+-i device：指定网络接口
+-r range：指定扫描网络范围
+-l file：指定扫描范围列表文件
+-p：使用被动模式，不发送任何数据
+-s time：每个APP请求之间的睡眠时间
+-n node：使用8字节的形式扫描
+-c count：发送APP请求的时间次数
+-f：使用主动模式
+-d：忽略配置文件
+-S：启用每个ARP请求之间抑制的睡眠时间
+-P：打印结果
+-C：将捕获信息输出，并继续进行扫描
+
+例如：扫描局域网内的所有host
+netdiscover
+
+

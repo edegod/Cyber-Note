@@ -1,0 +1,38 @@
+Mozilla/4.0或者Mozilla/5.0：代表浏IE以及其他大多数浏览器或者Chrome、Firefox、Safari浏览器。
+compatible：兼容的
+MSIE 8.0：Microsoft Internet Explorer 8.0
+操作系统标识：
+	FreeBSD
+	X11; FreeBSD (version no.) i386
+	X11; FreeBSD (version no.) AMD64
+	Linux
+	X11; Linux ppc
+	X11; Linux ppc64
+	X11; Linux i686
+	X11; Linux x86_64
+	Mac
+	Macintosh; PPC Mac OS X
+	Macintosh; Intel Mac OS X
+	Solaris
+	X11; SunOS i86pc
+	X11; SunOS sun4u
+	Windows
+	Windows NT 10.0 对应操作系统windows 10
+	windows NT 6.2 对应操作系统 windows 8
+	Windows NT 6.1 对应操作系统 windows 7
+	Windows NT 6.0 对应操作系统 windows vista
+	Windows NT 5.2 对应操作系统 windows 2003
+	Windows NT 5.1 对应操作系统 windows xp
+	Windows NT 5.0 对应操作系统 windows 2000
+	Windows ME
+	Windows 98
+WOW64：Windows操作系统子系统, 为32位应用程序提供了32位的模拟，可使大多数32位应用程序在无需修改的情况下运行在Windows64位版本上。
+显示浏览器的主流渲染引擎：Gecko、WebKit、KHTML、Presto、Trident、Tasman等，格式：渲染引擎/版本
+.NET CLR：一种NET语言，通用语言运行时(CLR:Common Language Runtime)
+InfoPath：企业级搜集信息和制作表单的工具，将很多的界面控件集成在该工具中，基于XML技术，为企业开发表单搜集系统提供极大的方便。
+FDM：频分多路复用，也叫分频多任务，是一种将多路基带信号调制到不同频率载波上再进行叠加形成一个复合信号的多路复用技术。
+MIME：(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。
+Keep-Alive：连接一会
+
+Cache-Control：详见word
+Progma：是一个在 HTTP/1.0 中规定的通用首部，这个首部的效果依赖于不同的实现，所以在“请求-响应”链中可能会有不同的效果。它用来向后兼容只支持 HTTP/1.0 协议的缓存服务器，那时候 HTTP/1.1 协议中的 Cache-Control 还没有出来。由于 Pragma 在 HTTP 响应中的行为没有确切规范，所以不能可靠替代 HTTP/1.1 中通用首部 Cache-Control，尽管在请求中，假如 Cache-Control 不存在的话，它的行为与 Cache-Control: no-cache 一致。建议只在需要兼容 HTTP/1.0 客户端的场合下应用 Pragma 首部。

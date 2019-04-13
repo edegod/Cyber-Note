@@ -1,0 +1,3 @@
+开源漏洞评估工具，主要用于论证网络内单点故障的复杂性和严重性。
+
+使用前需到https://www.paterva.com/web6/community/maltego注册账号

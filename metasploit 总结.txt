@@ -1,0 +1,3 @@
+msfconsole 对内接口
+msfcli 对外接口
+meterpreter 攻击载荷接口

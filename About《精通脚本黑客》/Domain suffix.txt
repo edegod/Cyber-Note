@@ -1,0 +1,68 @@
+com：Commercial organizations,商业组织,公司
+xyz：创意、创新；三维空间与无限可能
+net：Network operations and service centers,网络服务商
+top：顶级、高端、适用于任何商业 公司 个人
+tech：科技、技术
+org：Other organizations,非盈利组织
+gov：Governmental entities,政府部门
+edu：Educational institutions,教研机构
+.ink：internet king 互联网之王，同时英文单词是墨水的意思
+red：吉祥、红色、热情、勤奋
+int：International organizations,国际组织
+mil：Military (U.S),美国军部
+pub： public大众、公共、知名。
+国内域名
+cn: 中国国家顶级域名
+　　com.cn 中国公司和商业组织域名
+　　net.cn 中国网络服务机构域名
+　　gov.cn 中国政府机构域名
+　　org.cn 中国非盈利组织域名
+中文国内域名
+.中国: 中文中国国家顶级域名
+　　.公司: 中文中国公司和商业组织域名
+　　.网络: 中文中国网络服务机构域名
+新国际域名
+.red：吉祥、红色、热情、勤奋
+.ink：internet king 互联网之王，同时英文单词是墨水的意思
+.biz 商务网站
+.CC Corporation、Company简短的国际顶级域名
+.TV 电视台或频道
+　　.info 信息网与信息服务
+　　.name：一般由个人注册和使用
+　　.mobi域名 全球唯一专为手机及移动终端设备打造的域名
+　　.travel域名 是旅游业网上服务的代表
+中文国际域名
+中文.cc
+　　中文.tv
+　　中文.com
+　　中文.net
+　　中文.biz
+　　
+　　ICANN认可推出的8个新的顶级域名分别是：
+.red代表红色，也称吉祥
+.info代表一般的信息服务使用， 
+　　.biz代表商业， 
+　　.name代表个人, 
+　　.pro代表专家 
+　　（注：.pro有三个的不同扩展子域。.cpa.pro会计师，.law.pro律师，.med.pro医生）, 
+　　.museum代表博物馆, 
+　　.coop代表商业合作, 
+　　.aero代表航空业。
+Google入口：
+微软风格：http://www.google.com/microsoft
+MAC风格：http://www.google.com/mac
+BSD风格：http://www.google.com/bsd
+宗教风格：http://www.google.com/xx-elmer
+黑客风格：http://www.google.com/xx-hacker
+站内搜索地址：http://www.google.com/custom?domains=域名 
+中文黑客专用信息和资料搜索地址：http://www.google.com/custom?hl=zh-CN
+英文黑客专用信息和资料搜索地址：http://www.google.com/custom?hl=en
+FTP文件搜索引擎：
+http://s.wenjian.net/
+http://www.filesearching.com/
+元搜索引擎：
+http://www.dogpile.com/
+http://i.search.metacrawler.com/
+https://www.mamma.com/
+https://www.zapmeta.com/
+http://lookahead.surfwax.com/

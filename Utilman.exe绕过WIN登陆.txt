@@ -1,0 +1,3 @@
+使用PE进入WIN硬盘system32中
+把Utilman.exe重命名为Utilman.old，并复制cmd.exe并改名Utilman.exe
+重启进入WIN登陆界面按WIN+U键能打开cmd窗口

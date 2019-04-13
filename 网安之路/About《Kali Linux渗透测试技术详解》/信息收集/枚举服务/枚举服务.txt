@@ -1,0 +1,5 @@
+允许user从一个网络中收集某一类的所有相关信息。
+
+DNS枚举：收集本地所有DNS服务和相关条目，如用户名、计算机名、IP地址等，工具：DNSenum、fierce
+
+SNMP枚举：分析一个网络内SNMP信息传输，工具：Snmpwalk、SnmpEnum、smtp-user-enum

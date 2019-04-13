@@ -1,0 +1,5 @@
+使用Google查询网站信息，需翻墙
+
+命令：
+查看帮助：dmitry -h
+使用s命令：dmitry -s google.com

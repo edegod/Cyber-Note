@@ -1,0 +1,90 @@
+whois 域名/ip 查看域名的详细信息。
+ping 域名/ip 测试本机到远端主机是否联通。
+dig 域名/ip 查看域名解析的详细信息。
+host -l 域名 dns服务器 传输zone。
+
+扫描nmap
+
+-sS 半开扫描TCP和SYN扫描。
+-sT 完全TCP连接扫描。
+-sU UDP扫描
+-PS syn包探测(防火墙探测)
+-PA ack包探测(防火墙探测)
+-PN 不ping。
+-n 不dns解析。
+-A -O和-sV。
+-O 操作系统识别。
+-sV 服务版本信息(banner)
+-p 端口扫描。
+-T 设置时间级别(0-5)
+-iL 导入扫描结果。
+-oG 输出扫描结果。
+
+操作系统识别:
+p0f -i eth0 -U -p 开启混杂模式。
+xprobe2 ip|域名 检测os。
+
+banner获取:
+nc ip port 检测端口是否打开。
+telnet ip port 检测端口是否打开。
+wget ip 下载主页。
+cat index.html | more 显示主页代码。
+q 退出。
+
+windows枚举
+nmap -sS -p 139,445 ip 扫描windows。
+cd /pentest/enumeration/smb-enum
+nbtscan -f targetIP 检测netbios。
+smbgetserverinfo -i targetIP 扫描name,os,组。
+smbdumpusers -i targetIP 列出用户。
+smbclient -L //targetIP 列出共享。
+
+使用windows:
+net use \\ipipc$ "" /u:"" 开启空会话。
+net view \\ip 显示共享信息。
+smbclient:
+smbclient -L hostName -I targetIP 枚举共享。
+smbclient -L hostName/share -U "" 用空用户连接。
+smbclient -L hostName -I targetIP -U admin普通用户连接。
+
+rpcclient:
+rpcclient targetIP -U “”打开一个空会话。
+netshareenum 枚举共享。
+enumdomusers 枚举用户。
+lsaenumsid 枚举域SID。
+queryuser RID 查询用户信息。
+createdomuser 创建用户访问。
+
+ARP欺骗:
+ettercap:
+nano /usr/local/etc/etter.conf配置文件
+Sniff > Unified sniffing > Network interface: eth0 > OK 设置抓包的网卡
+Hosts > Scan for hosts (do this two times)扫描网段的主机
+Hosts > Hosts list 显示主机列表
+Select the default gateway > Add to Target 1 添加主机
+Select the target > Add to Target 2 添加主机
+Mitm > Arp poisoning > Sniff remote connections > OK 设置ARP攻击
+Start > Start sniffing 开始攻击
+dsniff -i eth0 监听网卡窃听登录用户密码
+urlsnarf -i eth0 嗅探http请求
+msgsnarf -i eth0 嗅探聊天软件的聊天内容
+driftnet -i eth0 网络管理嗅探图片，音频。
+
+dns欺骗:
+nano /usr/local/share/ettercap/etter.dns编辑配置文件
+Plugins > Manage the plugins > dns_spoof 设置dns欺骗
+Mitm > Arp poisoning > Sniff remote connections > OK 设置ARP
+Start > Start sniffing 开始攻击
+
+Exploits漏洞利用:
+cd /pentest/exploits/exploit-db 进入目录
+cat sploitlist.txt | grep -i [exploit] 查询需要的漏洞
+cat exploit | grep "#include"检查运行环境
+cat sploitlist.txt | grep -i exploit | cut -d " " -f1 | xargs grep sys | cut -d ":" -f1 | sort -u只保留可以在linux下运行的代码
+
+Metasploit:
+svn update 升级
+./msfweb Web接口127.0.0.1:55555。.
+./msfconsole 字符下的Console。
+help 帮助
+show 显示选项 searc

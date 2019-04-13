@@ -1,0 +1,84 @@
+--update  更新到最新版本
+ 
+--url   | -u <target url>  要扫描的`WordPress`站点.
+ 
+--force | -f   不检查网站运行的是不是`WordPress`
+ 
+--enumerate | -e [option(s)]  枚举
+
+option:
+
+u 枚举用户名，默认从1-10
+
+u[10-20] 枚举用户名，配置从10-20
+
+p 枚举插件
+
+vp 只枚举有漏洞的插件
+
+ap 枚举所有插件，时间较长
+
+tt 列举缩略图相关的文件
+
+t 枚举主题信息
+
+vt 只枚举存在漏洞的主题
+
+at 枚举所有主题，时间较长
+
+可以指定多个扫描选项，例："-e tt,p"
+
+如果没有指定选项，默认选项为："vt,tt,u,vp"
+
+--exclude-content-based "<regexp or string>"
+
+当使用枚举选项时，可以使用该参数做一些过滤，基于正则或者字符串，可以不写正则分隔符，但要用单引号或双引号包裹
+
+--config-file | -c <config file使用指定的配置文件
+
+--user-agent | -a <User-Agent指定User-Agent
+
+--cookie <String指定cookie
+
+--random-agent | -r 使用随机User-Agent
+
+--follow-redirection 如果目标包含一个重定向，则直接跟随跳转
+
+--batch 无需用户交互，都使用默认行为
+
+--no-color 不要采用彩色输出
+
+--wp-content-dir <wp content dirWPScan会去发现wp-content目录，用户可手动指定
+
+--wp-plugins-dir <wp plugins dir指定wp插件目录，默认是wp-content/plugins
+
+--proxy <[protocol://]host:port设置一个代理，可以使用HTTP、SOCKS4、SOCKS4A、SOCKS5，如果未设置默认是HTTP协议
+
+--proxy-auth <username:password设置代理登陆信息
+
+--basic-auth <username:password设置基础认证信息
+
+--wordlist | -w <wordlist指定密码字典
+
+--username | -U <username指定爆破的用户名
+
+--usernames <path-to-file指定爆破用户名字典
+
+--threads | -t <number of threads指定多线程
+
+--cache-ttl <cache-ttl设置 cache TTL
+
+--request-timeout <request-timeout请求超时时间
+
+--connect-timeout <connect-timeout连接超时时间
+
+--max-threads <max-threads最大线程数
+
+--throttle <milliseconds当线程数设置为1时，设置两个请求之间的间隔
+
+--help | -h 输出帮助信息
+
+--verbose | -v 输出Verbose
+
+--version 输出当前版本
+

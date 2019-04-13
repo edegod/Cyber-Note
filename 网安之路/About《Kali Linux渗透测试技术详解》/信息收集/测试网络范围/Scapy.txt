@@ -1,0 +1,11 @@
+交互式数据包处理工具、数据包生成器、网络扫描器、网络发现工具、包嗅探工具。
+
+命令如下：
+多行并行跟踪路由功能：
+1.启动：scapy
+2.使用sr()函数实现发送和接收数据包：ans,unans=sr(IP(dst="【URL】/【port】",ttl=(1,6))/TCP())
+Ctrl+C终止此操作
+3.以表的形式查看数据包发送情况：ans.make_table(lambda(s,r):s.dst,s.ttl,r.src)
+4.使用scapy查看TCP路由跟踪信息：res,unans=traceroute([【"URL"】,【"URL"】,。。。等],dport[80,443],maxttl=20,retry=-2)
+5.使用res.graph()函数以图的形式显示路由跟踪结果(保存该图可使用res.graph(target=">/tmp/graph.svg")命令)
+6.退出exit()

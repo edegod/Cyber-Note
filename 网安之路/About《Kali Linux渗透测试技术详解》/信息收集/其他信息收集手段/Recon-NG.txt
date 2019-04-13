@@ -1,0 +1,8 @@
+Recon-NG框架由Python编写
+查看有效模块：show modules
+1.使用recon/domains-hosts/baidu_site模块枚举百度网站的子域：use recon/domains-hosts/baidu_site
+2.查看该模块下可配置选项参数：show options
+3.配置SOURCE选项参数：set SOURCE baidu.com
+4.启动信息收集：run
+5.查看获取的数据：use reporting/csv
+6.生成报告：run

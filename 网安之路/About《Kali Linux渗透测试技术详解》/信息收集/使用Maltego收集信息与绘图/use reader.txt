@@ -1,0 +1,4 @@
+1.在kali菜单里的信息收集-情报分析中启动maltego
+2.登陆
+3.选择run a machine，然后选择company stalker(组织网)，然后输入一个域名(随意)
+4.接下来详情参见p108
